@@ -23,10 +23,12 @@ export function Header() {
 
     const { pathname } = useResolvedPath();
 
-    function logoutUser(){
+    function logoutUser() {
         logout();
         navigate('/login');
     }
+
+    const isLoggedIn = !!userInfo?.name;
 
     return (
         <Container>
@@ -46,25 +48,31 @@ export function Header() {
                 <Options>
                     <Profile>
                         <UserCircle size={24} color="#fff" />
-                        <div>
-                            <p>
-                                Olá, <span>{userInfo.name}</span>
-                            </p>
-                            <Logout onClick={logoutUser}>
-                                Sair
-                            </Logout>
-                        </div>
+                        {isLoggedIn ? (
+                            <div>
+                                <p>
+                                    Olá, <span>{userInfo.name}</span>
+                                </p>
+                                <Logout onClick={logoutUser}>
+                                    Sair
+                                </Logout>
+                            </div>
+                        ) : (
+                            <div>
+                                <Logout onClick={() => navigate('/login')}>
+                                    Entrar
+                                </Logout>
+                            </div>
+                        )}
                     </Profile>
 
                     <LinkContainer onClick={() => navigate('/carrinho')}>
                         <ShoppingCart size={24} color="#fff" />
-
                         {cartQuantity > 0 && (
                             <CountBadge>
                                 {cartQuantity}
                             </CountBadge>
                         )}
-
                         <HeaderLink to="/carrinho">
                             Carrinho
                         </HeaderLink>

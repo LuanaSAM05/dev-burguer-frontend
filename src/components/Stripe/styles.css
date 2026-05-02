@@ -214,6 +214,11 @@ td {
   text-decoration: none;
 }
 
+#stripe-badge-iframe,
+[id^="stripe-badge"],
+iframe[src*="stripe"] {
+  display: none !important;
+}
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);
