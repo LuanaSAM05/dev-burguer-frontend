@@ -43,7 +43,7 @@ export function CategoriesCarousel() {
                 {categories.map((category) => (
                     <ContainerItems
                         key={category.id}
-                        imageUrl={category.url}
+                        imageUrl={category.path}
                         onClick={() => {
                             console.log("clicou categoria:", category.id);
                             navigate(`/cardapio?categoria=${category.id}`);

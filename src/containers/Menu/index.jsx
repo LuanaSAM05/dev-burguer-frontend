@@ -25,36 +25,55 @@ export function Menu() {
         navigate(-1);
     }
 
-    // 🔵 CARREGA DADOS
+    // 🔵 CARREGAR DADOS
     useEffect(() => {
         async function loadData() {
-            const [categoriesRes, productsRes] = await Promise.all([
-                api.get("/categories"),
-                api.get("/products")
-            ]);
+            try {
+                const [categoriesRes, productsRes] = await Promise.all([
+                    api.get("/categories"),
+                    api.get("/products")
+                ]);
 
-            setCategories([
-                { id: 0, name: "Todas" },
-                ...categoriesRes.data
-            ]);
+                const categoriesData = Array.isArray(categoriesRes.data)
+                    ? categoriesRes.data
+                    : [];
 
-            const formattedProducts = productsRes.data.map((product) => ({
-                ...product,
-                currencyValue: formatPrice(product.price)
-            }));
+                const productsData = Array.isArray(productsRes.data)
+                    ? productsRes.data
+                    : [];
 
-            setProducts(formattedProducts);
+                setCategories([
+                    { id: 0, name: "Todas" },
+                    ...categoriesData
+                ]);
+
+                const formattedProducts = productsData.map((product) => ({
+                    ...product,
+                    currencyValue: formatPrice(product.price),
+                }));
+
+                setProducts(formattedProducts);
+
+            } catch (error) {
+                console.log("Erro ao carregar menu:", error);
+
+                setCategories([{ id: 0, name: "Todas" }]);
+                setProducts([]);
+            }
         }
 
         loadData();
     }, []);
 
-    // 🔥 CATEGORIA DA URL
+    // 🔵 CATEGORIA DA URL
     const categoryId = Number(searchParams.get("categoria")) || 0;
 
-    // 🔵 FILTRO
+    // 🔵 FILTRO DE PRODUTOS
     useEffect(() => {
-        if (!products.length) return;
+        if (!products.length) {
+            setFilteredProducts([]);
+            return;
+        }
 
         if (categoryId === 0) {
             setFilteredProducts(products);
@@ -104,7 +123,6 @@ export function Menu() {
                 ))}
             </ProductsContainer>
 
-            {/* 🔥 BOTÃO DE VOLTAR MAIS BONITO */}
             <BackButton onClick={handleGoBack}>
                 ← Voltar
             </BackButton>

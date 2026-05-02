@@ -92,7 +92,7 @@ export function Row({ row, orders, setOrders }) {
                       <TableCell>{product.name}</TableCell>
                       <TableCell>{product.category}</TableCell>
                       <TableCell>
-                        <ProductImage src={product.url} alt={product.name} />
+                        <ProductImage src={product.path} alt={product.name} />
                       </TableCell>
                     </TableRow>
                   ))}

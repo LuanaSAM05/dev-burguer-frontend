@@ -66,7 +66,7 @@ export function Products() {
                 </TableCell>
                 <TableCell align="center">{isOffer(product.offer)}</TableCell>
                 <TableCell align="center">
-                  <ProductImage src={product.url} />
+                  <ProductImage src={product.path} />
                 </TableCell>
                 <TableCell align="center">
                   <EditButton onClick={() => editProduct(product)}>
