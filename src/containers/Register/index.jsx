@@ -41,7 +41,7 @@ export function Register() {
     const {
         register,
         handleSubmit,
-        formState: { errors }, // <-- corrigido aqui
+        formState: { errors }, 
     } = useForm({
         resolver: yupResolver(schema),
     });

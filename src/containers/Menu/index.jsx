@@ -25,7 +25,7 @@ export function Menu() {
         navigate(-1);
     }
 
-    // 🔵 CARREGAR DADOS
+    
     useEffect(() => {
         async function loadData() {
             try {
@@ -65,10 +65,10 @@ export function Menu() {
         loadData();
     }, []);
 
-    // 🔵 CATEGORIA DA URL
+    
     const categoryId = Number(searchParams.get("categoria")) || 0;
 
-    // 🔵 FILTRO DE PRODUTOS
+    
     useEffect(() => {
         if (!products.length) {
             setFilteredProducts([]);

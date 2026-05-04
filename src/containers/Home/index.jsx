@@ -5,7 +5,7 @@ import { Banner, Container } from "./styles";
 export function Home() {
 
     return (
-        <main>
+        <main style={{ display: "flex", flexDirection: "column", flex: 1 }}>
             <Banner>
                 <h1>Bem-Vindo(a)!</h1>
             </Banner>

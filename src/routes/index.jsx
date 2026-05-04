@@ -21,16 +21,19 @@ import { Products } from "../containers/Admin/Products";
 export function Router() {
   return (
     <Routes>
+
       
       <Route path="/" element={<UserLayout />}>
-        
-        <Route index element={<Navigate to="/login" replace />} />
+
+       
+        <Route index element={<Home />} />
 
         <Route path="home" element={<Home />} />
         <Route path="cardapio" element={<Menu />} />
         <Route path="carrinho" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="complete-payment" element={<CompletePayment />} />
+
       </Route>
 
       
@@ -47,6 +50,7 @@ export function Router() {
 
       
       <Route path="*" element={<Navigate to="/login" replace />} />
+
     </Routes>
   );
 }

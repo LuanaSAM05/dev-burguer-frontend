@@ -36,7 +36,7 @@ export default function CheckoutForm() {
         price: product.price,
       }));
 
-      // 🔥 AQUI ESTÁ A CORREÇÃO PRINCIPAL
+      
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         redirect: 'if_required',
@@ -48,7 +48,7 @@ export default function CheckoutForm() {
         return;
       }
 
-      // 🔥 GARANTE QUE PAGOU
+      
       if (paymentIntent.status === 'succeeded') {
         const response = await api.post(
           '/orders',
@@ -60,7 +60,7 @@ export default function CheckoutForm() {
           clearCart();
           toast.success('Pedido realizado com sucesso!');
 
-          // 🔥 REDIRECIONAMENTO FUNCIONANDO
+          
           navigate(
             `/complete-payment?payment_intent_client_secret=${paymentIntent.client_secret}`,
           );

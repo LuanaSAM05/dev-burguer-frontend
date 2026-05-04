@@ -1,22 +1,19 @@
 import styled from "styled-components";
 import BannerHamburguer from "../../assets/banner-hamburguer2.jpg";
 import Background from "../../assets/background.png";
-import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
+  flex: 1; 
 
   background: linear-gradient(
       rgba(255,255,255, 0.8),
       rgba(255,255,255, 0.8)
   ),
   url('${Background}');
-
-  min-height: 500px;
 
   background-size: 1600px;
   background-repeat: repeat;
@@ -37,10 +34,8 @@ export const Banner = styled.div`
     content: '';
     position: absolute;
     inset: 0;
-
     background: url('${BannerHamburguer}') no-repeat center center;
     background-size: cover;
-
     filter: brightness(50%);
     z-index: 1;
   }
@@ -48,18 +43,40 @@ export const Banner = styled.div`
   h1 {
     font-family: 'Road Rage', sans-serif;
     font-size: 80px;
-    line-height: 65px;
-
+    line-height: 75px;
     position: relative;
     z-index: 2;
-
     color: ${(props) => props.theme.white};
-    right: 0;
     text-align: center;
+    margin-left: 40%;
 
     span {
       display: block;
-      font-size: 20px;
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 280px;
+
+    h1 {
+      font-size: 52px;
+      line-height: 48px;
+      margin-left: 200px;
+
+      span { font-size: 16px; }
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+
+    h1 {
+      font-size: 38px;
+      line-height: 36px;
+      margin-left: 200px;
+
+      span { font-size: 14px; }
     }
   }
 `;
@@ -68,8 +85,19 @@ export const CategoryMenu = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
-
   margin-top: 30px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+    margin-top: 16px;
+  }
 `;
 
 export const CategoryButton = styled.button`
@@ -77,7 +105,6 @@ export const CategoryButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-
   font-size: 24px;
   font-weight: 500;
 
@@ -88,48 +115,59 @@ export const CategoryButton = styled.button`
 
   border-bottom: ${(props) =>
     props.$isActiveCategory && `3px solid ${props.theme.purple}`};
+
+  @media (max-width: 768px) { font-size: 18px; }
+  @media (max-width: 480px) { font-size: 15px; }
 `;
 
 export const ProductsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  gap: 60px;
-
+  gap: 100px;
   max-width: 1280px;
   width: 100%;
-
   margin: 50px auto;
-
   padding: 40px;
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding: 20px;
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2px;
+    padding-left: 0;
+    margin: 20px auto;
+  }
 `;
 
 export const BackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 40px auto 80px;
-
   padding: 10px 18px;
-
   background: rgba(106, 63, 143, 0.08);
   border: 1px solid ${(props) => props.theme.purple};
-
   color: ${(props) => props.theme.purple};
-
   font-weight: 600;
   font-size: 16px;
-
   border-radius: 10px;
-
   cursor: pointer;
-
   transition: all 0.2s ease;
 
   &:hover {
     background: ${(props) => props.theme.purple};
     color: white;
     transform: scale(1.05);
+  }
+
+  @media (max-width: 480px) {
+    margin: 24px auto 40px;
+    font-size: 14px;
   }
 `;

@@ -6,6 +6,11 @@ export const Container = styled.div`
   width: 100%;
   height: 72px;
   padding: 0 56px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    height: 60px;
+  }
 `;
 
 export const Content = styled.div`
@@ -15,6 +20,7 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
 `;
 
@@ -22,7 +28,7 @@ export const Navigation = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 72px;
+  height: 100%;
 
   div {
     display: flex;
@@ -32,6 +38,12 @@ export const Navigation = styled.nav`
     hr {
       height: 24px;
       border: 1px solid ${(props) => props.theme.darkGray};
+    }
+  }
+
+  @media (max-width: 480px) {
+    div {
+      gap: 12px;
     }
   }
 `;
@@ -51,12 +63,24 @@ export const HeaderLink = styled(Link)`
   &:hover {
     color: ${(props) => props.theme.purple};
   }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
 export const Options = styled.div`
   display: flex;
   align-items: center;
   gap: 48px;
+
+  @media (max-width: 768px) {
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;
 
 export const Profile = styled.div`
@@ -72,6 +96,19 @@ export const Profile = styled.div`
       color: ${(props) => props.theme.purple};
     }
   }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    p {
+      display: none;
+    }
+  }
 `;
 
 export const LinkContainer = styled.div`
@@ -81,6 +118,15 @@ export const LinkContainer = styled.div`
 
   position: relative;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    gap: 6px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 export const Logout = styled.button`
@@ -88,9 +134,13 @@ export const Logout = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `;
 
-/* 🔥 IMPORTANTE: badge aqui */
 export const CountBadge = styled.span`
   position: absolute;
   top: -6px;
@@ -109,4 +159,11 @@ export const CountBadge = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 480px) {
+    right: 28px;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+  }
 `;

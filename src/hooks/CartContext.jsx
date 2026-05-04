@@ -5,7 +5,7 @@ const CartContext = createContext({});
 export const CartProvider = ({ children }) => {
     const [cartProducts, setCartProducts] = useState([]);
 
-    // 🟢 ADICIONAR PRODUTO
+    
     const putProductInCart = (product) => {
         const cartIndex = cartProducts.findIndex(
             (prd) => prd.id === product.id
@@ -26,13 +26,13 @@ export const CartProvider = ({ children }) => {
         updateCartProducts(newProductsInCart);
     };
 
-    // 🟢 LIMPAR CARRINHO
+    
     const clearCart = () => {
         setCartProducts([]);
         updateCartProducts([]);
     };
 
-    // 🟢 REMOVER ITEM
+    
     const deleteProduct = (productId) => {
         const newCart = cartProducts.filter(
             (prd) => prd.id !== productId
@@ -42,7 +42,7 @@ export const CartProvider = ({ children }) => {
         updateCartProducts(newCart);
     };
 
-    // 🟢 AUMENTAR
+   
     const increaseProduct = (productId) => {
         const newCart = cartProducts.map((prd) =>
             prd.id === productId
@@ -54,7 +54,7 @@ export const CartProvider = ({ children }) => {
         updateCartProducts(newCart);
     };
 
-    // 🟢 DIMINUIR
+    
     const decreaseProduct = (productId) => {
         const cartIndex = cartProducts.findIndex(
             (prd) => prd.id === productId
@@ -74,7 +74,7 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    // 🟢 SALVAR LOCALSTORAGE
+    
     const updateCartProducts = (products) => {
         localStorage.setItem(
             "devburguer:cartInfo",
@@ -82,7 +82,7 @@ export const CartProvider = ({ children }) => {
         );
     };
 
-    // 🟢 CARREGAR DO LOCALSTORAGE
+    
     useEffect(() => {
         const clientCartData = localStorage.getItem(
             "devburguer:cartInfo"
@@ -93,7 +93,7 @@ export const CartProvider = ({ children }) => {
         }
     }, []);
 
-    // 🔥 AQUI ESTÁ O QUE FALTAVA (CONTADOR GLOBAL)
+    
     const cartQuantity = cartProducts.reduce(
         (acc, item) => acc + item.quantity,
         0
@@ -103,7 +103,7 @@ export const CartProvider = ({ children }) => {
         <CartContext.Provider
             value={{
                 cartProducts,
-                cartQuantity, // 👈 AGORA EXISTE
+                cartQuantity, 
                 putProductInCart,
                 clearCart,
                 deleteProduct,

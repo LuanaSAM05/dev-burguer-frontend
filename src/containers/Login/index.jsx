@@ -63,7 +63,7 @@ export function Login() {
                                 if (userData?.admin) {
                                     navigate('/admin/pedidos');
                                 } else {
-                                    navigate('/home'); // ✅ CORREÇÃO AQUI
+                                    navigate('/home'); 
                                 }
                             }, 2000);
                             return 'Seja Bem-Vindo(a) 👌';
