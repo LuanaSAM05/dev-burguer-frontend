@@ -132,29 +132,30 @@ export const ProductsContainer = styled.div`
   /* Tablet */
   @media (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
-    gap: 80px 20px; /* ✅ gap vertical grande para imagem não sobrepor */
+    gap: 80px 20px;
     padding: 20px;
   }
 
   /* Mobile padrão */
   @media (max-width: 767px) {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 colunas no mobile */
-    gap: 80px 12px; /* ✅ gap vertical grande para imagem não sobrepor */
-    padding: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px 12px;
+    padding: 60px 16px 16px 16px; /* ✅ padding igual esquerda e direita */
     margin: 20px auto;
-    padding-top: 60px; /* ✅ espaço para as imagens absolutas */
+    width: 100%;
+    box-sizing: border-box; /* ✅ garante que padding não estoura a largura */
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr); /* ✅ mantém 2 colunas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 75px 10px;
-    padding: 12px;
-    padding-top: 55px;
+    padding: 55px 12px 12px 12px; /* ✅ padding igual esquerda e direita */
     margin: 16px auto;
+    width: 100%;
+    box-sizing: border-box;
   }
 `;
-
 export const BackButton = styled.button`
   display: flex;
   align-items: center;
