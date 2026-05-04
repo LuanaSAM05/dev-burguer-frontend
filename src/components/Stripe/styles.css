@@ -8,7 +8,7 @@
   align-items: center;
 
   min-height: 100vh;
-  min-height: 100dvh; 
+  min-height: 100dvh;
 
   width: 100%;
 }
@@ -32,6 +32,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  padding: 20px; /* ✅ evita colar nas bordas */
 }
 
 #payment-form {
@@ -116,24 +118,59 @@
   margin: auto;
 }
 
-@media (max-width: 1024px) {
+/* Notebook pequeno */
+@media (max-width: 1279px) and (min-width: 1024px) {
   #payment-form,
   #payment-status {
-    width: 60vw;
+    width: 50vw;
     min-width: unset;
   }
 }
 
-@media (max-width: 600px) {
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 768px) {
   #payment-form,
   #payment-status {
-    width: 90vw;
+    width: 70vw;
     min-width: unset;
+    padding: 30px;
+  }
+}
+
+/* Mobile padrão */
+@media (max-width: 767px) {
+  #payment-form,
+  #payment-status {
+    width: 100%; /* ✅ ocupa toda a largura */
+    min-width: unset; /* ✅ remove o min-width: 500px que causava o problema */
     padding: 20px;
+    margin-bottom: 20px;
   }
 
-  .App {
-    padding-bottom: 20px;
+  .container {
+    padding: 16px;
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  #payment-form,
+  #payment-status {
+    width: 100%;
+    min-width: unset;
+    padding: 16px;
+  }
+
+  .container {
+    padding: 12px;
+    padding-top: 30px;
+  }
+
+  .button {
+    padding: 10px 14px;
+    font-size: 15px;
   }
 }
 

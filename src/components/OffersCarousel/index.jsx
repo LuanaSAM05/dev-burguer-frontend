@@ -10,41 +10,40 @@ export function OffersCarousel() {
     const [offers, setOffers] = useState([]);
 
     useEffect(() => {
-
         async function loadProducts() {
             const { data } = await api.get("/products");
 
-           const onlyOffers = data
-           .filter((product) => product.offer)
-           .map((product) => ({
-            currencyValue: formatPrice(product.price), 
-            ...product}));
+            const onlyOffers = data
+                .filter((product) => product.offer)
+                .map((product) => ({
+                    currencyValue: formatPrice(product.price),
+                    ...product
+                }));
 
             setOffers(onlyOffers);
         }
 
         loadProducts();
-}, []);
+    }, []);
 
-        const responsive = {
-            superLargeDesktop: {
-                breakpoint: { max: 4000, min: 3000 },
-                items: 4,
-            },
-            desktop: {
-                breakpoint: { max: 3000, min: 1280 },
-                items: 4,
-            },
-            tablet: {
-                breakpoint: { max: 1280, min: 690 },
-                items: 3,
-            },
-            mobile: {
-                breakpoint: { max: 690, min: 0 },
-                items: 2,
-            }
-        };
-
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 4,
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1280 },
+            items: 4,
+        },
+        tablet: {
+            breakpoint: { max: 1280, min: 690 },
+            items: 3,
+        },
+        mobile: {
+            breakpoint: { max: 690, min: 0 },
+            items: 2,
+        }
+    };
 
     return (
         <Container>
@@ -55,10 +54,12 @@ export function OffersCarousel() {
                 infinite={true}
                 partialVisible={false}
                 itemClass="carousel-item"
+                containerClass="carousel-container"
             >
-
                 {offers.map((product) => (
-                  <CardProduct key={product.id} product={product} />
+                    <div key={product.id} style={{ display: 'flex', justifyContent: 'center', paddingTop: '60px' }}>
+                        <CardProduct product={product} />
+                    </div>
                 ))}
             </Carousel>
         </Container>

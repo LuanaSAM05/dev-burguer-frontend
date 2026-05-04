@@ -49,7 +49,7 @@ export const Container = styled.div`
 
   /* Tablet */
   @media (max-width: 1023px) and (min-width: 768px) {
-    width: 240px;
+    width: 220px;
     height: 210px;
     padding: 32px 24px;
     gap: 24px;
@@ -61,29 +61,27 @@ export const Container = styled.div`
 
   /* Mobile padrão */
   @media (max-width: 767px) {
-    width: 160px;
-    height: 190px;
-    padding: 24px 12px 16px;
-    gap: 12px;
+    width: 175px;
+    height: auto; /* ✅ altura automática para caber tudo */
+    padding: 20px 14px;
+    gap: 8px;
     border-radius: 16px;
-    margin-top: 40px; 
 
-    div { height: 50px; }
-    strong { font-size: 12px; }
-    p { font-size: 12px; margin-bottom: 16px; }
+    div { height: 44px; }
+    strong { font-size: 13px; }
+    p { font-size: 13px; margin-bottom: 6px; }
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
-    width: 145px;
-    height: 175px;
-    padding: 55px 10px 50px;
-    gap: 30px;
-    margin-top: 45px;
+    width: 155px;
+    height: auto; /* ✅ altura automática */
+    padding: 18px 12px;
+    gap: 6px;
 
-    div { height: 45px; }
-    strong { font-size: 11px; }
-    p { font-size: 11px; margin-bottom: 12px; }
+    div { height: 40px; }
+    strong { font-size: 12px; }
+    p { font-size: 12px; margin-bottom: 4px; }
   }
 `;
 
@@ -91,7 +89,7 @@ export const CardImage = styled.img`
   height: 100px;
   position: absolute;
   top: -60px;
-  left: 40%;
+  left: 50%;
   transform: translateX(-50%);
   object-fit: contain;
 
@@ -101,17 +99,17 @@ export const CardImage = styled.img`
     top: -40px;
   }
 
-  /* Mobile padrão  */
+  /* Mobile padrão */
   @media (max-width: 767px) {
-    height: 65px;
-    top: -38px;
-    left: 45%;
+    height: 75px;
+    top: -44px;
+    left: 50%;
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
-    height: 55px;
-    top: -32px;
-    left: 45%;
+    height: 65px;
+    top: -40px;
+    left: 50%;
   }
 `;

@@ -12,11 +12,9 @@ export const Container = styled.div`
   url('${Background}');
   min-height: 100vh;
   background-size: cover;
-
   display: flex;
   flex-direction: column;
-
-  overflow-x: hidden; 
+  overflow-x: hidden;
 `;
 
 export const Banner = styled.div`
@@ -36,9 +34,9 @@ export const Banner = styled.div`
   @media (max-width: 480px) {
     height: 150px;
 
-    img { 
-        height: 120px; 
-        margin-left: 40px;
+    img {
+      height: 120px;
+      margin-left: 40px;
     }
   }
 `;
@@ -75,8 +73,7 @@ export const Content = styled.div`
   padding: 40px;
   margin: 0 auto;
   gap: 40px;
-
-  flex: 1; 
+  flex: 1;
 
   /* Tablet */
   @media (max-width: 1024px) {
@@ -85,17 +82,20 @@ export const Content = styled.div`
     gap: 20px;
   }
 
-  /* Mobile */
+  /* Mobile padrão */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 16px 0 16px 6px;
+    padding: 16px; /* ✅ padding igual dos dois lados */
     margin: 0;
     max-width: 100%;
     gap: 16px;
+    overflow-x: hidden; /* ✅ evita scroll horizontal */
   }
 
+  /* Mobile pequeno */
   @media (max-width: 480px) {
-    padding: 12px 0 12px 4px;
+    padding: 12px; /* ✅ padding igual dos dois lados */
     margin: 0;
+    overflow-x: hidden;
   }
 `;

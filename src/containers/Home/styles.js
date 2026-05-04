@@ -47,8 +47,9 @@ export const Container = styled.section`
   url('${Background}');
   min-height: 500px;
   background-size: cover;
-
-  flex: 1; 
-  display: flex; 
-  flex-direction: column; 
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* ✅ evita scroll horizontal */
+  width: 100%;        /* ✅ garante que não vaza para os lados */
 `;

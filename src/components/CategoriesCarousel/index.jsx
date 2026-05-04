@@ -39,13 +39,14 @@ export function CategoriesCarousel() {
             <Carousel
                 responsive={responsive}
                 infinite
+                containerClass="carousel-container"
+                itemClass="carousel-item"
             >
                 {categories.map((category) => (
                     <ContainerItems
                         key={category.id}
                         imageUrl={category.path}
                         onClick={() => {
-                            console.log("clicou categoria:", category.id);
                             navigate(`/cardapio?categoria=${category.id}`);
                         }}
                     >

@@ -2,53 +2,41 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  overflow-x: hidden;
-
-
+  overflow: hidden;
   padding: 0 0 60px 0;
 
   .carousel-item {
-    padding-right: 16px;
+    padding: 0 8px;
   }
 
   .react-multi-carousel-list {
     overflow: visible;
   }
 
-  /* setas */
+  /* ✅ Setas centralizadas verticalmente nos cards */
   .react-multiple-carousel__arrow--left {
-    left: 15px;
-    top: 10px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .react-multiple-carousel__arrow--right {
-    top: 10px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-
+  /* Desktop */
   @media (min-width: 1024px) {
-    padding-left: 0;
-    padding-right: 0;
-
     .carousel-item {
-      padding-right: 16px;
-    }
-  }
-
-  /* Notebook */
-  @media (max-width: 1279px) and (min-width: 1024px) {
-    .carousel-item {
-      padding-right: 14px;
+      padding: 0 12px;
     }
   }
 
   /* Tablet */
   @media (max-width: 1023px) and (min-width: 768px) {
-    padding-left: 16px;
-    padding-right: 16px;
-
     .carousel-item {
-      padding-right: 12px;
+      padding: 0 8px;
     }
 
     .react-multi-carousel-list {
@@ -56,13 +44,10 @@ export const Container = styled.div`
     }
   }
 
-  /* Mobile */
+  /* Mobile padrão */
   @media (max-width: 767px) {
-    padding-left: 12px;
-    padding-right: 12px;
-
     .carousel-item {
-      padding-right: 10px;
+      padding: 0 6px;
     }
 
     .react-multi-carousel-list {
@@ -70,12 +55,10 @@ export const Container = styled.div`
     }
   }
 
+  /* Mobile pequeno */
   @media (max-width: 480px) {
-    padding-left: 10px;
-    padding-right: 10px;
-
     .carousel-item {
-      padding-right: 8px;
+      padding: 0 5px;
     }
   }
 `;
@@ -87,7 +70,6 @@ export const Title = styled.h2`
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-
   margin: 70px 0 40px 0;
 
   &::after {
@@ -98,5 +80,23 @@ export const Title = styled.h2`
     height: 4px;
     background: ${(props) => props.theme.gren};
     left: calc(50% - 28px);
+  }
+
+  /* Tablet */
+  @media (max-width: 1023px) and (min-width: 768px) {
+    font-size: 26px;
+    margin: 40px 0 30px 0;
+  }
+
+  /* Mobile padrão */
+  @media (max-width: 767px) {
+    font-size: 22px;
+    margin: 30px 0 24px 0;
+  }
+
+  /* Mobile pequeno */
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin: 24px 0 20px 0;
   }
 `;

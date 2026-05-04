@@ -14,8 +14,6 @@ export const Container = styled.div`
 
   .container-top {
     display: grid;
-
-    
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 
@@ -53,7 +51,7 @@ export const Container = styled.div`
       text-align: right;
 
       @media (max-width: 480px) {
-        padding-right: 90px;
+        padding-right: 10px; /* ✅ era 90px, corrigido */
       }
     }
 
@@ -72,11 +70,10 @@ export const Container = styled.div`
       text-align: right;
 
       @media (max-width: 480px) {
-        padding-right: 90px;
+        padding-right: 10px; /* ✅ era 90px, corrigido */
       }
     }
 
-    /*  MOBILE */
     @media (max-width: 480px) {
       grid-template-columns: 1fr 1fr;
       grid-gap: 12px;
@@ -96,14 +93,10 @@ export const Container = styled.div`
       font-weight: 700;
     }
 
-    /* MOBILE */
     @media (max-width: 480px) {
       font-size: 16px;
-      padding-right: 90px;
+      padding: 0 10px; /* ✅ era padding-right: 90px, corrigido */
       margin-bottom: 24px;
-
-      flex-wrap: wrap; 
-      gap: 8px;
     }
   }
 `;

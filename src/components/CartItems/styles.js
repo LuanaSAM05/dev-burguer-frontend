@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const ProductContainer = styled.div`
   display: flex;
   align-items: center;
@@ -18,7 +17,6 @@ export const ProductContainer = styled.div`
   }
 `;
 
-
 export const ProductImage = styled.img`
   height: 80px;
   width: 80px;
@@ -33,10 +31,8 @@ export const ProductImage = styled.img`
   @media (max-width: 480px) {
     height: 50px;
     width: 50px;
-    
   }
 `;
-
 
 export const ButtonGroup = styled.div`
   display: flex;
@@ -70,7 +66,6 @@ export const ButtonGroup = styled.div`
   }
 `;
 
-
 export const TrashImage = styled.img`
   height: 25px;
   width: 27px;
@@ -82,7 +77,6 @@ export const TrashImage = styled.img`
   }
 `;
 
-
 export const ProductTotalPrice = styled.p`
   font-weight: bold;
   font-size: 14px;
@@ -93,7 +87,6 @@ export const ProductTotalPrice = styled.p`
   }
 `;
 
-
 export const EmptyCart = styled.p`
   font-size: 20px;
   text-align: center;
@@ -101,7 +94,6 @@ export const EmptyCart = styled.p`
 
   @media (max-width: 480px) {
     font-size: 16px;
-    padding-left: 10px;
-    padding-right: 90px;
+    padding: 0; /* ✅ removido padding que cortava */
   }
 `;

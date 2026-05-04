@@ -2,32 +2,22 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  padding: 0;
 
-  @media (min-width: 1025px) {
-    padding-left: 0;
-    padding-right: 0;
-
-    .carousel-item {
-      padding-right: 16px;
-    }
+  .carousel-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
-  /* TABLET */
-  @media (max-width: 1024px) {
-    padding-left: 16px;
-
-    .carousel-item {
-      padding-right: 14px;
-    }
+  .carousel-item {
+    padding: 0 4px;
   }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    padding-left: 12px;
-
+  @media (max-width: 767px) {
     .carousel-item {
-      padding-right: 10px;
+      padding: 0 2px;
     }
   }
 `;
@@ -39,7 +29,7 @@ export const Title = styled.h2`
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   margin-top: 20px;
 
   &::after {
@@ -54,12 +44,13 @@ export const Title = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   @media (max-width: 480px) {
-    margin-top: 30px;
-    font-size: 30px;
+    font-size: 22px;
+    margin-top: 24px;
+    margin-bottom: 12px;
   }
 `;
 
@@ -67,49 +58,53 @@ export const ContainerItems = styled.div`
   background: url('${(props) => props.imageUrl}');
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
+  border-radius: 16px; /* ✅ border radius de volta */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 10px;
+  padding: 10px;
   width: 100%;
-  height: 255px;
+  height: 240px; /* ✅ diminuído de 300px para 240px */
   cursor: pointer;
 
-
-  @media (max-width: 768px) {
-    height: 180px;
+  @media (max-width: 1023px) and (min-width: 768px) {
+    height: 200px;
     border-radius: 12px;
   }
 
+  @media (max-width: 767px) {
+    height: 160px;
+    border-radius: 10px;
+  }
+
   @media (max-width: 480px) {
-    height: 140px;
-    margin-top: 20px;
+    height: 130px;
+    border-radius: 8px;
   }
 `;
 
 export const CategoryButton = styled.button`
   color: ${(props) => props.theme.white};
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 30px;
+  padding: 8px 16px;
   border-radius: 30px;
-  font-size: 22.5px;
+  font-size: 18px;
   font-weight: 500;
   text-align: center;
   transition: 0.2s;
+  border: none;
 
   &:hover {
     background-color: ${(props) => props.theme.purple};
   }
 
   @media (max-width: 768px) {
-    font-size: 16px;
-    padding: 8px 16px;
+    font-size: 14px;
+    padding: 6px 12px;
   }
 
   @media (max-width: 480px) {
-    font-size: 13px;
-    padding: 6px 12px;
-    margin-top: 95px;
+    font-size: 12px;
+    padding: 5px 10px;
   }
 `;
