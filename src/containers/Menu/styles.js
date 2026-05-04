@@ -7,7 +7,7 @@ export const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  flex: 1; 
+  flex: 1;
 
   background: linear-gradient(
       rgba(255,255,255, 0.8),
@@ -131,17 +131,27 @@ export const ProductsContainer = styled.div`
 
   /* Tablet */
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px 20px; /* ✅ gap vertical grande para imagem não sobrepor */
     padding: 20px;
   }
 
-  /* Mobile */
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2px;
-    padding-left: 0;
+  /* Mobile padrão */
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 colunas no mobile */
+    gap: 80px 12px; /* ✅ gap vertical grande para imagem não sobrepor */
+    padding: 16px;
     margin: 20px auto;
+    padding-top: 60px; /* ✅ espaço para as imagens absolutas */
+  }
+
+  /* Mobile pequeno */
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr); /* ✅ mantém 2 colunas */
+    gap: 75px 10px;
+    padding: 12px;
+    padding-top: 55px;
+    margin: 16px auto;
   }
 `;
 
