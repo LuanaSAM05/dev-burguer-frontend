@@ -64,13 +64,13 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 800;
   color: ${(props) => props.theme.gren};
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin: 70px 0 40px 0;
+  margin: 80px 0 40px 0;
 
   &::after {
     content: '';

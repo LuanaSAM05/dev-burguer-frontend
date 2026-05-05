@@ -23,14 +23,14 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 800;
   color: ${(props) => props.theme.purple};
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin-bottom: 24px;
-  margin-top: 20px;
+  margin-bottom: 80px;
+  margin-top: 80px;
 
   &::after {
     content: '';
@@ -83,15 +83,26 @@ export const ContainerItems = styled.div`
 `;
 
 export const CategoryButton = styled.button`
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+
   color: ${(props) => props.theme.white};
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 8px 16px;
+
+  padding: 6px 18px; 
   border-radius: 30px;
-  font-size: 18px;
+
+  font-size: 30px; 
   font-weight: 500;
   text-align: center;
-  transition: 0.2s;
+
   border: none;
+  cursor: pointer;
+  white-space: nowrap; 
+
+  transition: 0.2s;
 
   &:hover {
     background-color: ${(props) => props.theme.purple};

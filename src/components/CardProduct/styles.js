@@ -13,6 +13,7 @@ export const Container = styled.div`
   height: 260px;
   border-radius: 28.48px;
   position: relative;
+  margin-bottom: 80px;
 
   div {
     width: 100%;
