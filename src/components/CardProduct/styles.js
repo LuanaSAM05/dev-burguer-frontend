@@ -44,7 +44,9 @@ export const Container = styled.div`
     padding: 40px;
 
     strong { font-size: 18px; }
-    p { font-size: 16px; }
+    p { 
+      font-size: 16px; 
+    }
   }
 
   /* Tablet */
@@ -62,7 +64,7 @@ export const Container = styled.div`
   /* Mobile padrão */
   @media (max-width: 767px) {
     width: 175px;
-    height: auto; /* ✅ altura automática para caber tudo */
+    height: 150px; 
     padding: 20px 14px;
     gap: 8px;
     border-radius: 16px;
@@ -75,13 +77,13 @@ export const Container = styled.div`
   /* Mobile pequeno */
   @media (max-width: 480px) {
     width: 155px;
-    height: auto; /* ✅ altura automática */
+    height: 160px; 
     padding: 18px 12px;
     gap: 6px;
 
-    div { height: 40px; }
+    div { height: 40px; margin-bottom: 50px; }
     strong { font-size: 12px; }
-    p { font-size: 12px; margin-bottom: 4px; }
+    p { font-size: 12px; margin-bottom: 10px; margin-top: 15px; }
   }
 `;
 
@@ -96,20 +98,20 @@ export const CardImage = styled.img`
   /* Tablet */
   @media (max-width: 1023px) and (min-width: 768px) {
     height: 80px;
-    top: -40px;
+    top: -50px;
   }
 
   /* Mobile padrão */
   @media (max-width: 767px) {
     height: 75px;
-    top: -44px;
+    top: -50px;
     left: 50%;
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
     height: 65px;
-    top: -40px;
+    top: -50px;
     left: 50%;
   }
 `;

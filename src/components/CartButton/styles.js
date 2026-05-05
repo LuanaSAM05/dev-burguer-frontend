@@ -30,6 +30,6 @@ export const ContainerButton = styled.button`
   /* Mobile pequeno */
   @media (max-width: 480px) {
     height: 34px;
-    font-size: 18px;
+    font-size: 13px;
   }
 `;

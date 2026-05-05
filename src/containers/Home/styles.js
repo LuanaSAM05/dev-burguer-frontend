@@ -50,6 +50,6 @@ export const Container = styled.section`
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden; /* ✅ evita scroll horizontal */
-  width: 100%;        /* ✅ garante que não vaza para os lados */
+  overflow-x: hidden; 
+  width: 100%;        
 `;

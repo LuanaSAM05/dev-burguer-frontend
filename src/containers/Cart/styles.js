@@ -85,16 +85,16 @@ export const Content = styled.div`
   /* Mobile padrão */
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 16px; /* ✅ padding igual dos dois lados */
+    padding: 16px; 
     margin: 0;
     max-width: 100%;
     gap: 16px;
-    overflow-x: hidden; /* ✅ evita scroll horizontal */
+    overflow-x: hidden; 
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
-    padding: 12px; /* ✅ padding igual dos dois lados */
+    padding: 12px; 
     margin: 0;
     overflow-x: hidden;
   }

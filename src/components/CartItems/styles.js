@@ -94,6 +94,6 @@ export const EmptyCart = styled.p`
 
   @media (max-width: 480px) {
     font-size: 16px;
-    padding: 0; /* ✅ removido padding que cortava */
+    padding: 0; 
   }
 `;

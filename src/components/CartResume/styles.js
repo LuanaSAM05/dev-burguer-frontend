@@ -51,7 +51,7 @@ export const Container = styled.div`
       text-align: right;
 
       @media (max-width: 480px) {
-        padding-right: 10px; /* ✅ era 90px, corrigido */
+        padding-right: 10px; 
       }
     }
 
@@ -70,7 +70,7 @@ export const Container = styled.div`
       text-align: right;
 
       @media (max-width: 480px) {
-        padding-right: 10px; /* ✅ era 90px, corrigido */
+        padding-right: 10px; 
       }
     }
 
@@ -95,7 +95,7 @@ export const Container = styled.div`
 
     @media (max-width: 480px) {
       font-size: 16px;
-      padding: 0 10px; /* ✅ era padding-right: 90px, corrigido */
+      padding: 0 10px;
       margin-bottom: 24px;
     }
   }

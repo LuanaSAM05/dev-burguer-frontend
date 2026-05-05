@@ -111,13 +111,16 @@ export const CategoryButton = styled.button`
   color: ${(props) =>
     props.$isActiveCategory ? props.theme.purple : "#6a6767"};
 
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 
   border-bottom: ${(props) =>
     props.$isActiveCategory && `3px solid ${props.theme.purple}`};
 
   @media (max-width: 768px) { font-size: 18px; }
-  @media (max-width: 480px) { font-size: 15px; }
+  @media (max-width: 480px) { 
+    font-size: 15px; 
+    padding-top: 10px;
+    }
 `;
 
 export const ProductsContainer = styled.div`
@@ -140,18 +143,18 @@ export const ProductsContainer = styled.div`
   @media (max-width: 767px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 80px 12px;
-    padding: 60px 16px 16px 16px; /* ✅ padding igual esquerda e direita */
+    padding: 60px 16px 16px 16px; 
     margin: 20px auto;
     width: 100%;
-    box-sizing: border-box; /* ✅ garante que padding não estoura a largura */
+    box-sizing: border-box; 
   }
 
   /* Mobile pequeno */
   @media (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 75px 10px;
-    padding: 55px 12px 12px 12px; /* ✅ padding igual esquerda e direita */
-    margin: 16px auto;
+    padding: 55px 12px 12px 12px; 
+    margin-left: 20px;
     width: 100%;
     box-sizing: border-box;
   }

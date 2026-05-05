@@ -58,13 +58,12 @@ export const ContainerItems = styled.div`
   background: url('${(props) => props.imageUrl}');
   background-position: center;
   background-size: cover;
-  border-radius: 16px; /* ✅ border radius de volta */
-  display: flex;
+  border-radius: 16px; 
   align-items: center;
   justify-content: center;
   padding: 10px;
   width: 100%;
-  height: 240px; /* ✅ diminuído de 300px para 240px */
+  height: 240px; 
   cursor: pointer;
 
   @media (max-width: 1023px) and (min-width: 768px) {

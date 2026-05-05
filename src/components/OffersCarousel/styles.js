@@ -13,7 +13,7 @@ export const Container = styled.div`
     overflow: visible;
   }
 
-  /* ✅ Setas centralizadas verticalmente nos cards */
+  
   .react-multiple-carousel__arrow--left {
     left: 0;
     top: 50%;
