@@ -1,32 +1,37 @@
 import { Elements } from "@stripe/react-stripe-js";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import stripePromise from "../../config/stripeConfig";
 import CheckoutForm from "../../components/Stripe/CheckoutForm";
 
 export function Checkout() {
   const { state } = useLocation();
+  const navigate = useNavigate();
+
   const clientSecret = state?.clientSecret;
 
+  useEffect(() => {
+    if (!clientSecret) {
+      navigate("/");
+    }
+  }, [clientSecret, navigate]);
+
   if (!clientSecret) {
-    return <h1>Erro, volte e tente novamente</h1>;
+    return <div>Carregando pagamento...</div>;
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between'
-    }}>
-      <Elements
-        stripe={stripePromise}
-        options={{
-          clientSecret,
-          appearance: { theme: 'stripe' } 
-        }}
-      >
-        <CheckoutForm />
-      </Elements>
-    </div>
+    <Elements
+      stripe={stripePromise}
+      options={{
+        clientSecret,
+        appearance: {
+          theme: "stripe",
+        },
+        loader: "always", 
+      }}
+    >
+      <CheckoutForm />
+    </Elements>
   );
 }

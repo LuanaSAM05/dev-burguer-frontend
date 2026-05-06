@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles.css";
 import {
   PaymentElement,
   useStripe,
   useElements,
-} from '@stripe/react-stripe-js';
-import { toast } from 'react-toastify';
-import { api } from '../../../services/api';
-import { useCart } from '../../../hooks/CartContext';
+} from "@stripe/react-stripe-js";
+import { toast } from "react-toastify";
+import { api } from "../../../services/api";
+import { useCart } from "../../../hooks/CartContext";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -18,12 +18,19 @@ export default function CheckoutForm() {
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isReady, setIsReady] = useState(false); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      console.error('Stripe não carregado');
+      console.error("Stripe não carregado");
+      return;
+    }
+
+    
+    if (!isReady) {
+      toast.error("Aguarde o formulário carregar completamente.");
       return;
     }
 
@@ -36,42 +43,38 @@ export default function CheckoutForm() {
         price: product.price,
       }));
 
-      
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
-        redirect: 'if_required',
+        redirect: "if_required",
       });
 
       if (error) {
-        toast.error(error.message || 'Erro no pagamento!');
+        toast.error(error.message || "Erro no pagamento!");
         setIsLoading(false);
         return;
       }
 
-      
-      if (paymentIntent.status === 'succeeded') {
+      if (paymentIntent.status === "succeeded") {
         const response = await api.post(
-          '/orders',
+          "/orders",
           { products },
-          { validateStatus: () => true },
+          { validateStatus: () => true }
         );
 
         if (response.status === 200 || response.status === 201) {
           clearCart();
-          toast.success('Pedido realizado com sucesso!');
-
-          
+          toast.success("Pedido realizado com sucesso!");
           navigate(
-            `/complete-payment?payment_intent_client_secret=${paymentIntent.client_secret}`,
+            `/complete-payment?payment_intent_client_secret=${paymentIntent.client_secret}`
           );
         } else {
-          toast.error('Erro ao salvar pedido');
+          toast.error("Erro ao salvar pedido");
         }
       }
     } catch (err) {
       console.error(err);
-      toast.error('Erro no sistema!');
-      setMessage('Erro no pagamento');
+      toast.error("Erro no sistema!");
+      setMessage("Erro no pagamento");
     } finally {
       setIsLoading(false);
     }
@@ -80,10 +83,27 @@ export default function CheckoutForm() {
   return (
     <div className="container">
       <form id="payment-form" onSubmit={handleSubmit}>
-        <PaymentElement id="payment-element" />
+        <PaymentElement
+          id="payment-element"
+          
+          onReady={() => setIsReady(true)}
+          options={{
+            layout: "tabs", 
+          }}
+        />
 
-        <button disabled={isLoading || !stripe || !elements} className="button">
-          {isLoading ? 'Processando...' : 'Pagar agora'}
+        
+        {!isReady && (
+          <p style={{ textAlign: "center", color: "#888", margin: "12px 0" }}>
+            Carregando métodos de pagamento...
+          </p>
+        )}
+
+        <button
+          disabled={isLoading || !stripe || !elements || !isReady}
+          className="button"
+        >
+          {isLoading ? "Processando..." : "Pagar agora"}
         </button>
 
         {message && <div>{message}</div>}
