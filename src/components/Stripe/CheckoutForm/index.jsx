@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 import {
@@ -18,18 +18,23 @@ export default function CheckoutForm() {
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isReady, setIsReady] = useState(false); 
+  const [isReady, setIsReady] = useState(false);
+
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!isReady) {
+        setIsReady(true);
+      }
+    }, 10000);
+
+    return () => clearTimeout(timeout);
+  }, [isReady]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
-      console.error("Stripe não carregado");
-      return;
-    }
-
-    
-    if (!isReady) {
       toast.error("Aguarde o formulário carregar completamente.");
       return;
     }
@@ -85,14 +90,12 @@ export default function CheckoutForm() {
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement
           id="payment-element"
-          
           onReady={() => setIsReady(true)}
           options={{
-            layout: "tabs", 
+            layout: "tabs",
           }}
         />
 
-        
         {!isReady && (
           <p style={{ textAlign: "center", color: "#888", margin: "12px 0" }}>
             Carregando métodos de pagamento...
