@@ -14,8 +14,7 @@ export function CartResume() {
     const [deliveryTax] = useState(500);
 
     const navigate = useNavigate();
-
-    const { cartProducts, clearCart } = useCart();
+    const { cartProducts } = useCart();
 
     useEffect(() => {
         const sumAllItems = cartProducts.reduce((acc, current) => {
@@ -34,28 +33,18 @@ export function CartResume() {
         });
 
         try {
-            const { data } = await api.post('/create-payment-intent',
-                { products });
+            const { data } = await api.post('/create-payment-intent', {
+                products
+            });
 
+            
             navigate('/checkout', {
-                state: data,
+                state: { clientSecret: data.clientSecret },
             });
 
         } catch (error) {
-            toast.error('Erro, tente novamente mais tarde!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: "bounce",
-
-            });
+            toast.error('Erro, tente novamente mais tarde!');
         }
-
     };
 
     return (
@@ -68,14 +57,19 @@ export function CartResume() {
                     <p className="delivery-tax">Taxa de Entrega</p>
                     <p className="delivery-tax-price">{formatPrice(deliveryTax)}</p>
                 </div>
+
                 <div className="container-bottom">
                     <p>Total</p>
                     <p>{formatPrice(finalPrice + deliveryTax)}</p>
                 </div>
-
             </Container>
 
-            <Button onClick={submitOrder} style={{ marginTop: "20px", width: "100%" }}>Finalizar Pedido</Button>
+            <Button 
+              onClick={submitOrder} 
+              style={{ marginTop: "20px", width: "100%" }}
+            >
+              Finalizar Pedido
+            </Button>
         </div>
     );
 }

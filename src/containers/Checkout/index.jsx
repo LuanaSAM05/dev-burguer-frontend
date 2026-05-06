@@ -5,7 +5,6 @@ import CheckoutForm from "../../components/Stripe/CheckoutForm";
 
 export function Checkout() {
   const { state } = useLocation();
-
   const clientSecret = state?.clientSecret;
 
   if (!clientSecret) {
@@ -13,8 +12,21 @@ export function Checkout() {
   }
 
   return (
-    <Elements stripe={stripePromise} options={{ clientSecret }}>
-      <CheckoutForm />
-    </Elements>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between'
+    }}>
+      <Elements
+        stripe={stripePromise}
+        options={{
+          clientSecret,
+          appearance: { theme: 'stripe' } 
+        }}
+      >
+        <CheckoutForm />
+      </Elements>
+    </div>
   );
 }
