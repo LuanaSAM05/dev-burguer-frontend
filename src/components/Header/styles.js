@@ -57,7 +57,7 @@ export const HeaderLink = styled(Link)`
 
   padding-bottom: 5px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 17px;
   transition: color 200ms;
 
   &:hover {
