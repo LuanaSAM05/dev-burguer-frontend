@@ -34,4 +34,4 @@ export function Checkout() {
       <CheckoutForm />
     </Elements>
   );
-}git
+}
