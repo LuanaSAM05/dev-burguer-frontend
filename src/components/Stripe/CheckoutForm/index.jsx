@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 import {
@@ -19,17 +19,7 @@ export default function CheckoutForm() {
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isReady, setIsReady] = useState(false);
-
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!isReady) {
-        setIsReady(true);
-      }
-    }, 10000);
-
-    return () => clearTimeout(timeout);
-  }, [isReady]);
+  const [stripeError, setStripeError] = useState(null); // 🔥 captura erro do Stripe
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,12 +81,23 @@ export default function CheckoutForm() {
         <PaymentElement
           id="payment-element"
           onReady={() => setIsReady(true)}
+          onLoadError={(error) => {
+            console.error(error);
+            setStripeError(JSON.stringify(error)); // 🔥 mostra o erro na tela
+          }}
           options={{
             layout: "tabs",
           }}
         />
 
-        {!isReady && (
+        {/* 🔥 mostra o erro do Stripe na tela do celular */}
+        {stripeError && (
+          <p style={{ color: "red", fontSize: "12px", wordBreak: "break-all" }}>
+            {stripeError}
+          </p>
+        )}
+
+        {!isReady && !stripeError && (
           <p style={{ textAlign: "center", color: "#888", margin: "12px 0" }}>
             Carregando métodos de pagamento...
           </p>
