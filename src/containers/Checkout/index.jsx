@@ -1,14 +1,15 @@
 import { Elements } from "@stripe/react-stripe-js";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import stripePromise from "../../config/stripeConfig";
 import CheckoutForm from "../../components/Stripe/CheckoutForm";
 
 export function Checkout() {
-  const { state } = useLocation();
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const clientSecret = state?.clientSecret;
+  // 🔥 CORREÇÃO: lê o clientSecret da URL em vez do state
+  const clientSecret = searchParams.get("clientSecret");
 
   useEffect(() => {
     if (!clientSecret) {
@@ -28,7 +29,7 @@ export function Checkout() {
         appearance: {
           theme: "stripe",
         },
-        loader: "always", 
+        loader: "always",
       }}
     >
       <CheckoutForm />
