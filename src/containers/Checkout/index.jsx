@@ -8,7 +8,6 @@ export function Checkout() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  // 🔥 CORREÇÃO: lê o clientSecret da URL em vez do state
   const clientSecret = searchParams.get("clientSecret");
 
   useEffect(() => {
@@ -29,10 +28,10 @@ export function Checkout() {
         appearance: {
           theme: "stripe",
         },
-        loader: "always",
+        // 🔥 CORREÇÃO: removido loader: "always" que causava falha silenciosa no mobile
       }}
     >
       <CheckoutForm />
     </Elements>
   );
-}
+}git
