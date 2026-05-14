@@ -29,8 +29,8 @@ export const Title = styled.h2`
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin-bottom: 80px;
-  margin-top: 80px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 
   &::after {
     content: '';
@@ -63,7 +63,7 @@ export const ContainerItems = styled.div`
   justify-content: center;
   padding: 10px;
   width: 100%;
-  height: 240px; 
+  height: 220px; 
   cursor: pointer;
 
   @media (max-width: 1023px) and (min-width: 768px) {

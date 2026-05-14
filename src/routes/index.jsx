@@ -22,21 +22,18 @@ export function Router() {
   return (
     <Routes>
 
-     
+      
       <Route path="/" element={<UserLayout />}>
-
-        
-        <Route index element={<Navigate to="/login" replace />} />
+        <Route index element={<Navigate to="/home" replace />} />
 
         <Route path="home" element={<Home />} />
         <Route path="cardapio" element={<Menu />} />
         <Route path="carrinho" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="complete-payment" element={<CompletePayment />} />
-
       </Route>
 
-      
+      {/* ADMIN */}
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="pedidos" element={<Orders />} />
         <Route path="novo-produto" element={<NewProduct />} />
@@ -44,12 +41,12 @@ export function Router() {
         <Route path="produtos" element={<Products />} />
       </Route>
 
-      
+      {/* AUTH */}
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Register />} />
 
-      
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      {/* fallback */}
+      <Route path="*" element={<Navigate to="/home" replace />} />
 
     </Routes>
   );

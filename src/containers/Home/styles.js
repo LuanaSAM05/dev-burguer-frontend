@@ -6,7 +6,7 @@ export const Banner = styled.div`
   background: url('${BannerHome}');
   background-size: cover;
   background-position: center;
-  height: 480px;
+  height: 300px;
 
   h1 {
     font-family: 'Road Rage', sans-serif;
@@ -14,7 +14,7 @@ export const Banner = styled.div`
     color: ${(props) => props.theme.darkWhite};
     position: absolute;
     right: 20%;
-    top: 10%;
+    top: 20%;
   }
 
   @media (max-width: 768px) {

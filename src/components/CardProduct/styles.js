@@ -4,16 +4,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  padding: 50px;
+  gap: 30px;
+  padding: 60px;
   background: ${(props) => props.theme.white};
   cursor: grab;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 340px;
-  height: 260px;
+  width: 320px;
+  height: 220px;
   border-radius: 28.48px;
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 5px;
 
   div {
     width: 100%;
@@ -89,7 +89,7 @@ export const Container = styled.div`
 `;
 
 export const CardImage = styled.img`
-  height: 100px;
+  height: 85px;
   position: absolute;
   top: -60px;
   left: 50%;

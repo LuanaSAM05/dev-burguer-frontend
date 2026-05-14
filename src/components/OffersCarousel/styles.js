@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   overflow: hidden;
   padding: 0 0 60px 0;
+  margin-bottom: 5px;
 
   .carousel-item {
     padding: 0 8px;
@@ -70,7 +71,7 @@ export const Title = styled.h2`
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin: 80px 0 40px 0;
+  margin: 20px 0 20px 0;
 
   &::after {
     content: '';

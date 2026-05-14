@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-bottom: 5px;
 
   background: linear-gradient(
       rgba(255,255,255, 0.8),
@@ -26,7 +27,7 @@ export const Banner = styled.div`
   justify-content: center;
   align-items: center;
 
-  height: 480px;
+  height: 300px;
   width: 100%;
   position: relative;
 
@@ -85,7 +86,7 @@ export const CategoryMenu = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
-  margin-top: 30px;
+  margin-top: 40px;
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
@@ -129,9 +130,9 @@ export const ProductsContainer = styled.div`
   gap: 100px;
   max-width: 1280px;
   width: 100%;
-  margin: 50px auto;
-  padding: 40px;
+  margin: 60px auto;
 
+  padding: 40px;
   /* Tablet */
   @media (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
