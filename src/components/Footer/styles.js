@@ -8,7 +8,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: -15px;
 
   p {
     color: ${(props) => props.theme.white};
