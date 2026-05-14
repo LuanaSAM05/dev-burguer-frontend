@@ -18,9 +18,9 @@ import { NewProduct } from "../containers/Admin/NewProduct";
 import { EditProduct } from "../containers/Admin/EditProduct";
 import { Products } from "../containers/Admin/Products";
 
-
 function PrivateRoute({ children }) {
-  const token = localStorage.getItem("token");
+  const userInfo = JSON.parse(localStorage.getItem("devburguer:userData") || "{}");
+  const token = userInfo?.token;
   return token ? children : <Navigate to="/login" replace />;
 }
 
@@ -30,7 +30,7 @@ export function Router() {
 
       <Route path="/" element={<Navigate to="/login" replace />} />
 
-      
+      {/* ROTAS DO USUÁRIO — protegidas */}
       <Route element={
         <PrivateRoute>
           <UserLayout />
@@ -43,7 +43,7 @@ export function Router() {
         <Route path="/complete-payment" element={<CompletePayment />} />
       </Route>
 
-      
+      {/* ADMIN — protegido */}
       <Route path="/admin" element={
         <PrivateRoute>
           <AdminLayout />
@@ -55,11 +55,11 @@ export function Router() {
         <Route path="produtos" element={<Products />} />
       </Route>
 
-      
+      {/* AUTH */}
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Register />} />
 
-      
+      {/* FALLBACK */}
       <Route path="*" element={<Navigate to="/login" replace />} />
 
     </Routes>

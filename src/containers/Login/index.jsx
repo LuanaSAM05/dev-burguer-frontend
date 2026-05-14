@@ -56,28 +56,24 @@ export function Login() {
                     password: data.password,
                 }),
                 {
-                    pending: 'Verificando seus dados',
-                    success: {
-                        render() {
-                            setTimeout(() => {
-                                if (userData?.admin) {
-                                    navigate('/admin/pedidos');
-                                } else {
-                                    navigate('/home'); 
-                                }
-                            }, 2000);
-                            return 'Seja Bem-Vindo(a) 👌';
-                        },
-                    },
+                    pending: 'Verificando seus dados...',
+                    success: 'Seja Bem-Vindo(a) 👌',
                     error: 'Email ou Senha Incorretos 🤯',
                 }
             );
 
+            // 1. Salva os dados do usuário no contexto
             putUserData(userData);
+
+            // 2. Redireciona DEPOIS de salvar
+            if (userData?.admin) {
+                navigate('/admin/pedidos');
+            } else {
+                navigate('/home');
+            }
 
         } catch (error) {
             console.error(error);
-            toast.error('Erro inesperado. Tente novamente mais tarde 😢');
         }
     };
 
