@@ -34,7 +34,7 @@ const schema = yup.object({
       return value && value.length > 0;
     })
     .test('fileSize', 'Carregue arquivos ate 3mb', (value) => {
-      return value && value.length > 0 && value[0].size <= 30000;
+      return value && value.length > 0 && value[0].size <= 3 * 1024 * 1024;
     })
     .test('type', 'Carregue apenas imagens PNG ou JPEG', (value) => {
       return (
@@ -73,12 +73,12 @@ export function NewProduct() {
     const productFormData = new FormData();
 
     productFormData.append('name', data.name);
-    productFormData.append('price', data.price * 100);
-    productFormData.append('category_id', data.category_id);
+    productFormData.append('price', Math.round(data.price * 100));
+    productFormData.append('category_id', data.category.id);
     productFormData.append('file', data.file[0]);
     productFormData.append('offer', data.offer);
 
-    await toast.promise(api.post('/product', productFormData), {
+    await toast.promise(api.post('/products', productFormData), {
       pending: 'Adicionando o produto...',
       success: 'Produto criado com sucesso',
       error: 'Falha ao adicionar o produto, tente novamente',
