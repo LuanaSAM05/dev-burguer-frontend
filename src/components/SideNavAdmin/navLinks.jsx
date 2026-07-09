@@ -1,4 +1,4 @@
-import { List, ListPlus, Receipt } from "@phosphor-icons/react";
+import { List, ListPlus, Receipt, Tag } from "@phosphor-icons/react";
 
 export const navLinks = [
     {
@@ -18,5 +18,11 @@ export const navLinks = [
         label: 'Adicionar Produto',
         path: '/admin/novo-produto',
         icon: <ListPlus />
+    },
+    {
+        id: 4,
+        label: 'Categorias',
+        path: '/admin/categorias',
+        icon: <Tag />
     }
 ];

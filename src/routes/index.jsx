@@ -17,6 +17,9 @@ import { Orders } from "../containers/Admin/Orders";
 import { NewProduct } from "../containers/Admin/NewProduct";
 import { EditProduct } from "../containers/Admin/EditProduct";
 import { Products } from "../containers/Admin/Products";
+import { Categories } from "../containers/Admin/Categories";
+import { NewCategory } from "../containers/Admin/NewCategory";
+import { EditCategory } from "../containers/Admin/EditCategory";
 
 function PrivateRoute({ children }) {
   const userInfo = JSON.parse(localStorage.getItem("devburguer:userData") || "{}");
@@ -53,6 +56,9 @@ export function Router() {
         <Route path="novo-produto" element={<NewProduct />} />
         <Route path="editar-produto" element={<EditProduct />} />
         <Route path="produtos" element={<Products />} />
+        <Route path="categorias" element={<Categories />} />
+        <Route path="nova-categoria" element={<NewCategory />} />
+        <Route path="editar-categoria" element={<EditCategory />} />
       </Route>
 
       {/* AUTH */}
